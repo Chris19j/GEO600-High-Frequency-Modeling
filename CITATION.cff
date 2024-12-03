@@ -1,1 +1,14 @@
-
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Jungkind"
+  given-names: "Christopher"
+- family-names: "Seymour"
+  given-names: "Brian"
+- family-names: "Laeuger"
+  given-names: "Andrew"
+title: "GEO600 High-Frequency Modeling"
+version: 2.39.3
+date-released: 2024-12-2
+license: MIT
+url: "https://github.com/Chris19j/GEO600-High-Frequency-Modeling"
