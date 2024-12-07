@@ -2,9 +2,9 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 authors:
 - family-names: "Jungkind"
-  given-names: "Christopher"
+  given-names: "Christopher M."
 - family-names: "Seymour"
-  given-names: "Brian"
+  given-names: "Brian C."
 - family-names: "Laeuger"
   given-names: "Andrew"
 title: "GEO600 High-Frequency Modeling"
