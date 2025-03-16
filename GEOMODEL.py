@@ -63,7 +63,7 @@ def adjust_model(p='', prm_phi='', srm_phi='', srm_T='', sq_db='', sq_angle='', 
         # Signal-Recycling Mirror:
         
         s srcav BS.p4 srm.p1 L=1.109                 # Signal-recycling cavity 
-        m srm T=0.09995 L=50e-6 phi=90               # Signal-recycling mirror
+        m srm T=0.09995 L=50e-6 phi=0               # Signal-recycling mirror
         
         # Adjust the phi parameter (between 0 and 90) of the srm mirror to detune GEO600
         
