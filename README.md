@@ -8,8 +8,8 @@ Below is a detailed explanation of how the sensitivity arrays are generated, sky
 ## Antenna Patterns Folder:
 
 All antenna pattern NPZ files are located in the `Antenna Patterns` folder. Each NPZ file contains the **antenna pattern array** and the **frequency array** that is used to calculate the antenna pattern, each having their own respective access key. Each NPZ file is named using the following nomenclature: `interferometer name`_ `antenna pattern GW-incidence` _ `array size` _ `logarithmic frequency bounds`. The `antenna pattern GW-incidence` notation is that `F_rms` corresponds to $\mathcal{R}(f)$, `F_norm` corresponds to $\left|F_+^\mathrm{\ fold}\left(f,\hat n = \hat z\right)\right|$, and `F_15` corresponds to $\left|F_+^\mathrm{\ fold}\left(f, \theta_{\hat n} = 15^\circ, \phi_{\hat n} = 0^\circ \right)\right|$, where $\mathcal{R}(f)$, $\left|F_+^\mathrm{\ fold}\left(f,\hat n = \hat z\right)\right|$, and $\left|F_+^\mathrm{\ fold}\left(f, \theta_{\hat n} = 15^\circ, \phi_{\hat n} = 0^\circ \right)\right|$ are each explained in the paper. For clarification, here are two different GEO600 antenna pattern NPZ files explained:
-- `GEO_F_norm_100000_05.npz`: antenna pattern for GEO600 assuming a normal-incident GW ran over a frequency array of `np.logspace(0,5,100000)`
-- `GEO_F_rms_100000_05.npz`: sky-averaged antenna pattern for GEO600 ran over a frequency array of `np.logspace(0,5,100000)`
+- `GEO_F_norm_100000_05.npz`: antenna pattern for GEO600 assuming a normal-incident GW, swept over a frequency array of `np.logspace(0,5,100000)`
+- `GEO_F_rms_100000_05.npz`: sky-averaged antenna pattern for GEO600, swept over a frequency array of `np.logspace(0,5,100000)`
 
 ---
 
@@ -49,12 +49,12 @@ The NPZ file, and all arrays included in it, are generated in the notebook `GEO 
 ### Sensitivities Used in Figures 2, 3, 4, and 6:
 
 The sensitivities used in Figures 2–4 and 6 in the paper correspond to **directional (non-sky-averaged)** responses. Each **GEO600** array from the NPZ file is multiplied by 
-$\frac{\mathcal{R}(f)}{\left|F_+^\mathrm{\ fold}\left(f, \theta_{\hat n} = 15^\circ, \phi_{\hat n} = 0^\circ \right)\right|}$ to get the
-strain sensitivity assuming a GW incident from $\theta_{\hat n} = 15^\circ$ overhead.
+$\frac{\mathcal{R}(f)}{\left|F_+^\mathrm{\ fold}\left(f, \theta_{\hat n} = 15^\circ, \phi_{\hat n} = 0^\circ \right)\right|}$ to obtain a
+strain sensitivity array that assumes a GW incident from $\theta_{\hat n} = 15^\circ$ overhead.
 
 For **aLIGO** and **CE**, the antenna pattern is applied by dividing the strain sensitivity arrays by 
-$\left|F_+^\mathrm{\ fold}\left(f, \theta_{\hat n} = 15^\circ, \phi_{\hat n} = 0^\circ \right)\right|$,
-so all detectors are normalized to the same GW incidence direction.
+$\left|F_+^\mathrm{\ fold}\left(f, \theta_{\hat n} = 15^\circ, \phi_{\hat n} = 0^\circ \right)\right|$, to obtain a strain sensitivity array that assume the same GW incidence 
+as the GEO600 arrays, ensuring all detectors are normalized to the same GW incidence direction.
 
 ---
 
@@ -70,6 +70,5 @@ For **Figure 5** in the paper, and all **Signal-to-Noise Ratio (SNR)** calculati
 ### Sensitivities Used in Figure 8 (Noise Budget):
 
 The sensitivities in **Figure 8** of the paper, which is made by the `GEO Noise Budget.ipynb` notebook, are not imported from the NPZ file. 
-Each individual noise curve, as well as the total strain sensitivity, is computed in Finesse, which assumes a normal-incident GW antenna pattern.  
-The total sky-averaged strain sensitivity is obtained by multiplying the total strain sensitivity for normal incidence by 
+Instead, each individual noise sensitivity, as well as the total sensitivity, is computed by Finesse in the `GEO Noise Budget.ipynb` notebook itself, which assumes a normal-incident GW antenna pattern. The total sky-averaged strain sensitivity is obtained by multiplying the normal-incident total strain sensitivity by 
 $\frac{\left|F_+^\mathrm{\ fold}\left(f,\hat n = \hat z\right)\right|}{\mathcal{R}(f)}$.
