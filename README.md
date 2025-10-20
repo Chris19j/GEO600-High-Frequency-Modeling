@@ -1,13 +1,19 @@
 ## Quick Guide: How the Sensitivities are Calculated and Used
 
-This repository contains all strain sensitivity calculations and notebooks used to model the **high-frequency response of GEO600** and compare it to aLIGO and Cosmic Explorer.  
+This repository contains all strain sensitivity calculations and notebooks used to model the **high-frequency response of GEO600** and compare it to aLIGO and Cosmic Explorer.
 Below is a detailed explanation of how the sensitivity arrays are generated, sky-averaged, and applied in different figures.
 
 ---
 
+### Antenna Patterns:
+
+All antenna pattern NPZ files are located in the `Antenna Patterns` folder. Each NPZ file contains the **antenna pattern array** and the **frequency array** that is used to calculate the antenna pattern, each having their own respective access key. Each NPZ file is named using the following nomenclature: `interferometer name`_ `antenna pattern GW-incidence` _ `array size` _ `logarithmic frequency bounds`. The `antenna pattern GW-incidence` notation is that `F_rms` corresponds to $\mathcal{R}(f)$, `F_norm` corresponds to $\left|F_+^\mathrm{\ fold}\left(f,\hat n = \hat z\right)\right|$, and `F_15` corresponds to $\left|F_+^\mathrm{\ fold}\left(f, \theta_{\hat n} = 15^\circ, \phi_{\hat n} = 0^\circ \right)\right|$, where $\mathcal{R}(f)$, $\left|F_+^\mathrm{\ fold}\left(f,\hat n = \hat z\right)\right|$, and $\left|F_+^\mathrm{\ fold}\left(f, \theta_{\hat n} = 15^\circ, \phi_{\hat n} = 0^\circ \right)\right|$ are each explained in the paper. For clarification, here are two different GEO600 antenna pattern NPZ files explained:
+- `GEO_F_norm_100000_05.npz`: antenna pattern for GEO600 assuming a normal-incident GW ran over a frequency array of `np.logspace(0,5,100000)`
+- `GEO_F_rms_100000_05.npz`: sky-averaged antenna pattern for GEO600 ran over a frequency array of `np.logspace(0,5,100000)`
+
 ### NPZ File of Sensitivities:
 
-The file `ASD_50W_100000_05.npz` contains multiple **strain sensitivity arrays**, all given as **Amplitude Spectral Densities (ASDs)**.  
+The file `ASD_50W_100000_05.npz` contains multiple **strain sensitivity arrays**, all given as **Amplitude Spectral Densities (ASDs)**.
 Each array is accessed by its key name (as seen in the notebooks).
 
 Included in the NPZ file:
